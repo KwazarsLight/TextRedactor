@@ -26,5 +26,8 @@ C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\Redactor.pdb
 C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\DownloadFIleWnd.g.cs
 C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\DownloadFIleWnd.baml
 C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\SaveFileWND.g.cs
-C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\obj\Debug\SaveFileWND.baml
+C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\bin\Debug\ICSharpCode.SharpZipLib.pdb
+C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\kwazar.ECOPOL\source\repos\Redactor\Redactor\bin\Debug\Ionic.Zip.dll

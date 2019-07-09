@@ -21,6 +21,10 @@ namespace Redactor
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private bool isJSONformatterOn = true,
+                     isXMLformatterOn = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,12 +33,11 @@ namespace Redactor
         private void UploadloadFileClick(object sender, RoutedEventArgs e)
         {
             
-
         }
 
         private void DownloadFileClick(object sender, RoutedEventArgs e)
         {
-            DownloadFIleWnd wnd = new DownloadFIleWnd();
+            DownloadFileWnd wnd = new DownloadFileWnd();
             TextFile file = wnd.ShowDialog();
 
             if (!wnd.IsActive && file != null)
@@ -68,6 +71,33 @@ namespace Redactor
                     RedactorTextBox.Text = "";
                 }
             }
+        }
+
+        private void RedactorTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string[] textBuffer;
+            string   lineBuffer;
+
+
+            if(isJSONformatterOn)
+            {
+                lineBuffer = RedactorTextBox.Text.Substring(e.Changes.Count);       // Take all changes even if test was pasted 
+                if (lineBuffer.Contains("\r"))
+                {
+                    textBuffer = lineBuffer.Split('\r');
+                    for(int i = 0; i < textBuffer.Length; i++)
+                    {
+
+                    }
+                }
+                lineBuffer = textBuffer[textBuffer.Length - 1];                     //
+                textBuffer = lineBuffer.Split('\"');                                //
+            }
+        }
+
+        private string LineFormatter()
+        {
+
         }
     }
 }

@@ -29,7 +29,7 @@
                 <MenuItem Header="XML Stntax check On/Off"></MenuItem>
             </MenuItem>
         </Menu>
-        <TextBox x:Name="RedactorTextBox" HorizontalAlignment="Left" Height="387" Margin="10,14,0,0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" VerticalAlignment="Top" Width="763" Visibility="Hidden" Grid.Row="1" />
+        <TextBox x:Name="RedactorTextBox" HorizontalAlignment="Left" Height="387" Margin="10,14,0,0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" VerticalAlignment="Top" Width="763" Visibility="Hidden" Grid.Row="1" TextChanged="RedactorTextBox_TextChanged" />
         <Label x:Name="StartInstructionsLabel" Content="Let's write something!&#xD;&#xA;Push File -&gt; Create new file!" HorizontalAlignment="Left" Margin="243,137,0,0" VerticalAlignment="Top" Height="77" Width="338" FontSize="24" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1"/>
 
     </Grid>

@@ -21,31 +21,27 @@ namespace Redactor
     {
 
         string fileText;
-        public SaveFileWND()
-        {
-            InitializeComponent();
-        }
+        DbAssistant loader;
 
         public SaveFileWND(string text)
         {
+            loader = new DbAssistant();
             InitializeComponent();
             fileText = text;
             ExtensionComboBox.ItemsSource = Enum.GetValues(typeof(eExtensions)).Cast<eExtensions>();
         }
 
-        private void OkButton_Click(object sender, RoutedEventArgs e)
+        private async void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            Loader loader = new Loader();
-
-            byte[] binaryFile = Utils.StringtToByteArray(fileText, Encoding.Default);
+            byte[] binaryFile = Utils.StringToByteArray(fileText, Encoding.Default);
 
             TextFile file = new TextFile(FileNameTextBox.Text, (eExtensions)ExtensionComboBox.SelectedValue, binaryFile);
 
-            loader.InsertFile(file);
-            loader.Dispose();
 
             MessageBox.Show("Done!");
+            await loader.InsertFileAsync(file);
             this.Close();
+            loader.Dispose();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

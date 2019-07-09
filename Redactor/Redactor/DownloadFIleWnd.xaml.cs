@@ -18,23 +18,23 @@ namespace Redactor
     /// <summary>
     /// Interaction logic for DownloadFIleWnd.xaml
     /// </summary>
-    public partial class DownloadFIleWnd : Window
+    public partial class DownloadFileWnd : Window
     {
-        Loader loader = new Loader();
+        DbAssistant loader;
         TextFile file;
 
-        public DownloadFIleWnd()
+        public DownloadFileWnd()
         {
+            loader = new DbAssistant();
             InitializeComponent();
         }
 
-        private async void DataGrid_Initialized(object sender, EventArgs e)
+        private void DataGrid_Initialized(object sender, EventArgs e)
         {
-            DataTable table = await loader.ShowTable();
-            DbTableDataGrid.ItemsSource = table.DefaultView;
+            DbTableDataGrid.ItemsSource = loader.ShowTable().DefaultView;
         }
 
-        private void DbTableDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void DbTableDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             DataGrid dataGrid = sender as DataGrid;
             if (dataGrid.SelectedItem != null)
@@ -42,7 +42,7 @@ namespace Redactor
                 DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
                 DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
-                file = loader.ReadFile(Int32.Parse(((TextBlock)RowColumn.Content).Text));
+                file = await loader.ReadFile(Int32.Parse(((TextBlock)RowColumn.Content).Text));
 
                 this.Close();
             }
