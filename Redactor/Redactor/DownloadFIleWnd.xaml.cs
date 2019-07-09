@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace Redactor
 {
@@ -31,8 +22,8 @@ namespace Redactor
 
         private void DataGrid_Initialized(object sender, EventArgs e)
         {
-            DbTableDataGrid.ItemsSource = loader.ShowTable().DefaultView;
-        }
+            DbTableDataGrid.ItemsSource = loader.ShowTable().DefaultView;                                                   //Load data from db when grid initializing,   
+        }                                                                                                                   //cause it have to be initialized earlier then window
 
         private async void DbTableDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -42,16 +33,17 @@ namespace Redactor
                 DataGridRow row = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
                 DataGridCell RowColumn = dataGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
 
-                file = await loader.ReadFile(Int32.Parse(((TextBlock)RowColumn.Content).Text));
+                file = await loader.ReadFile(Int32.Parse(((TextBlock)RowColumn.Content).Text));                             //Heap of type castings needs to take value of id_file to take right file 
 
                 this.Close();
             }
-            else { MessageBox.Show("Choised wrong value."); }
+            else { MessageBox.Show("Choised wrong row!"); }
         }
 
         public TextFile ShowDialog()
         {
             base.ShowDialog();
+            loader.Dispose();
             return file;
         }
 

@@ -12,25 +12,18 @@ using System.Data.Common;
 
 namespace Redactor
 {
-
-
     public sealed class DbAssistant : IDisposable
     {
         enum eRequest { Insert, Delete, PullRow, PullTable };
 
-        SQLiteConnection con = new SQLiteConnection(
-        ConfigurationManager.ConnectionStrings["FileDatabaseConnection"].ConnectionString, true);
+        SQLiteConnection con = new SQLiteConnection
+            (
+                                   ConfigurationManager.ConnectionStrings["FileDatabaseConnection"].ConnectionString,
+                                   true
+            );
         string sqlRequest;
         SQLiteCommand command;
 
-        private static DbAssistant instance;
-        private static object syncRoot = new Object();
-        public string Name { get; private set; }
-
-        private DbAssistant(string name)
-        {
-            this.Name = name;
-        }
         public DbAssistant()
         {
             try
@@ -38,7 +31,6 @@ namespace Redactor
                 con.Open();
             }
             catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message); }
-
         }
 
 
@@ -49,7 +41,7 @@ namespace Redactor
                 case eRequest.Insert:
                     return "insert into Files(Name, Extension, File) values (@Name, @Extension, @File);";
                 case eRequest.Delete:
-                    return "delete Files where Id_File = @IdFileValue";
+                    return "delete Files where Id_File = @IdFileValue";                                     //TO-DO Create deleteFile_method 
                 case eRequest.PullRow:
                     return "select * from Files where  Id_File = @IdFileValue";
                 case eRequest.PullTable:

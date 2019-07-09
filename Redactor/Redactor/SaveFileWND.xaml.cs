@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Redactor
 {
@@ -37,7 +28,6 @@ namespace Redactor
 
             TextFile file = new TextFile(FileNameTextBox.Text, (eExtensions)ExtensionComboBox.SelectedValue, binaryFile);
 
-
             MessageBox.Show("Done!");
             await loader.InsertFileAsync(file);
             this.Close();
@@ -46,6 +36,7 @@ namespace Redactor
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            loader.Dispose();
             this.Close();
         }
     }

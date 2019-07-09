@@ -19,18 +19,13 @@
             <MenuItem Header="File">
                 <MenuItem Header="Create new file" Click="CreateFile_Click"></MenuItem>
                 <MenuItem Header="Save current file" Click="SaveCurrentFile_Click"></MenuItem>
+                <MenuItem Header="Close application" Click="QuitMenu_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Database">
-                <MenuItem Header="Upload file" Click="UploadloadFileClick"></MenuItem>
                 <MenuItem Header="Dowload file" Click="DownloadFileClick"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Syntax check">
-                <MenuItem Header="JSON Syntax check On/Off"></MenuItem>
-                <MenuItem Header="XML Stntax check On/Off"></MenuItem>
-            </MenuItem>
         </Menu>
-        <TextBox x:Name="RedactorTextBox" HorizontalAlignment="Left" Height="387" Margin="10,14,0,0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" VerticalAlignment="Top" Width="763" Visibility="Hidden" Grid.Row="1" TextChanged="RedactorTextBox_TextChanged" />
+        <TextBox x:Name="RedactorTextBox" HorizontalAlignment="Left" Height="387" Margin="10,14,0,0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" VerticalAlignment="Top" Width="763" Visibility="Hidden" Grid.Row="1" />
         <Label x:Name="StartInstructionsLabel" Content="Let's write something!&#xD;&#xA;Push File -&gt; Create new file!" HorizontalAlignment="Left" Margin="243,137,0,0" VerticalAlignment="Top" Height="77" Width="338" FontSize="24" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1"/>
-
     </Grid>
 </Window>
